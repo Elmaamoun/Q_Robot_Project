@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="casters">
+
+    <!-- front_caster --> 
+    <link name="front_caster">
+    <inertial>
+      <origin
+        xyz="0 0.00262548022336079 0.00782423038311422"
+        rpy="0 0 0" />
+      <mass
+        value="0.138185712842945" />
+      <inertia
+        ixx="1.60956976262129E-05"
+        ixy="3.92875700537699E-21"
+        ixz="1.96593622940958E-20"
+        iyy="2.36807747991614E-05"
+        iyz="3.49950426187175E-06"
+        izz="3.28973005722072E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://q_robot_description/meshes/front_caster.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.650980392156863 0.619607843137255 0.588235294117647 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://q_robot_description/meshes/front_caster.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+ <!-- front_caster_joint --> 
+  <joint
+    name="front_caster_joint"
+    type="fixed">
+    <origin
+      xyz="0.115 0 -0.046"
+      rpy="0.32443 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_caster" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+<!-- back_caster --> 
+  <link
+    name="back_caster">
+    <inertial>
+      <origin
+        xyz="0 0.00825298106839455 5.56561112277643E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.138185712842945" />
+      <inertia
+        ixx="1.60956976262129E-05"
+        ixy="-1.92679602198523E-21"
+        ixz="-1.14424002357776E-21"
+        iyy="3.40754530956607E-05"
+        iyz="-3.68962750472638E-09"
+        izz="2.2502622275708E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://q_robot_description/meshes/back_caster.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.650980392156863 0.619607843137255 0.588235294117647 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://q_robot_description/meshes/back_caster.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+<!-- back_caster_joint --> 
+  <joint
+    name="back_caster_joint"
+    type="fixed">
+    <origin
+      xyz="-0.115 0 -0.046"
+      rpy="1.5708 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="back_caster" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+    </xacro:macro>
+
+</robot>

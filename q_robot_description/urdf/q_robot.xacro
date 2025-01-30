@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot name="q_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- تضمين الملفات الفرعية -->
+  <xacro:include filename="$(find q_robot_description)/urdf/base.xacro"/>
+  <xacro:include filename="$(find q_robot_description)/urdf/wheels.xacro"/>
+  <xacro:include filename="$(find q_robot_description)/urdf/casters.xacro"/>
+  <xacro:include filename="$(find q_robot_description)/urdf/sensors.xacro"/>
+  <xacro:include filename="$(find q_robot_description)/urdf/q_robot.gazebo"/>
+
+  <!-- تعريف المتغيرات العامة -->
+  <xacro:property name="wheel_radius" value="0.1"/>
+  <xacro:property name="wheel_length" value="0.05"/>
+
+  <!-- بناء الروبوت -->
+  <xacro:base/>
+  <xacro:wheels/>
+  <xacro:casters/>
+  <xacro:sensors/>
+
+</robot>

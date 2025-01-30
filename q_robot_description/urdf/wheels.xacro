@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="wheels">
+    <!-- تعريف ماكرو للعجلات -->
+    <xacro:macro name="wheel" params="prefix parent_link xyz rpy axis">
+    <link name="wheel_${prefix}">
+        <inertial>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <mass value="0.035"/>
+          <inertia ixx="1.5e-5" ixy="0" ixz="0" iyy="1.5e-5" iyz="0" izz="2.5e-5"/>
+        </inertial>
+        <visual>
+          <geometry>
+            <mesh filename="package://q_robot_description/meshes/${prefix}_wheel.STL"/>
+          </geometry>
+          <material name="dark_gray">
+            <color rgba="0.33 0.33 0.33 1"/>
+          </material>
+        </visual>
+        <collision>
+          <geometry>
+            <mesh filename="package://q_robot_description/meshes/${prefix}_wheel.STL"/>
+          </geometry>
+        </collision>
+      </link>
+    <joint name="wheel_${prefix}_joint" type="continuous">
+        <origin xyz="${xyz}" rpy="${rpy}"/>
+        <parent link="${parent_link}"/>
+      <child link="wheel_${prefix}"/>
+        <axis xyz="${axis}"/>
+      </joint>
+    </xacro:macro>
+
+    <!-- استدعاء الماكرو للعجلات -->
+    <xacro:wheel prefix="left" parent_link="base_link" xyz="0 0.115 -0.02" rpy="1.5708 0 0" axis="0 0 -1"/>
+    <xacro:wheel prefix="right" parent_link="base_link" xyz="0 -0.115 -0.02" rpy="1.5708 0 0" axis="0 0 -1"/>
+  </xacro:macro>
+
+</robot>
